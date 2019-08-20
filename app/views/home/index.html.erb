@@ -1,0 +1,48 @@
+<% if user_signed_in? && current_user.is_admin?%>
+<div class="row p-15">
+	<div class="col-md-6">
+		<h3>Secret Codes</h3>
+	</div>
+	<div class="col-md-6 text-right">
+		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Create Secret Codes</button>
+	</div>
+</div>
+<div class="col-md-12">
+<table class="display table" style="width:100%">
+	<thead class="">
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">Secret Code</th>
+			<th scope="col">Associated User</th>
+			<th scope="col">Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @secret_codes.each_with_index do |sec_code, index| %>
+		<tr>
+			<th scope="row"><%=index+1%></th>
+			<td><%=sec_code.code%></td>
+			<% if sec_code.user.present? %>
+			<td><%=sec_code.user.full_name %></td>
+			<td><a href="Javascript:void()" class="btn-disabled">Destory</a></td>
+			<% else %>
+			<td>-</td>
+			<td><%=link_to "Delete", secret_code_path(sec_code), method: :delete%></td>
+		</tr>
+		<% end %>
+		<% end %>
+	</tbody>
+</table>
+</div>
+<%=render partial: '/home/partials/code_modal'%>
+<% else %>
+<div class="container">
+	<div style="background: url('/assets/eng.jpeg'); height: 100vh;background-size: cover;"></div>
+</div>
+<% end %>
+
+<script type="text/javascript">
+	$(document).ready( function () {
+		$('.table').DataTable();
+	} );
+</script>

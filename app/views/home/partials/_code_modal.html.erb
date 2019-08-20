@@ -1,0 +1,25 @@
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Create Secret Codes</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <%= form_tag '/secret_codes' do%>
+      <div class="modal-body">
+        <div class="form-group">
+         <label for="sel1">Numbers of Codes::</label>
+         <%=select_tag :code_count, options_for_select([1,10, 20, 50, 100], 10),{class: 'form-control'}%>
+       </div>
+     </div>
+     <div class="modal-footer">
+       <div class="row">
+        <div class="col-md-12">
+        <button type="submit" class="btn btn-eng width-120" >Create</button>
+      </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+</div>

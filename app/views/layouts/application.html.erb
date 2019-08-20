@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>EngAiApp</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+  <%=render partial: '/layouts/partials/header'%>
+  <%= yield %>
+
+  <script>
+   <%- flash.each do |name, msg| -%>
+   $(document).ready(function() {
+    toastr.options = {
+      closeButton: true,
+      progressBar: true,
+      showMethod: 'slideDown',
+      timeOut: 9000
+    };
+    <% if name=="notice" %>
+    toastr.success('<%= msg %>');
+    <% else  %>
+    toastr.warning('<%= msg %>');
+
+    <% end %>
+  }); 
+   <% end %>   
+ </script>
+</body>
+</html>
