@@ -5,20 +5,14 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version - 2.5.3
+* Rails version - 5.2.2
+* Run following commnds
+	cd path to app
+* rvm use 2.5.3@5.2.2
+* bundle install
+* rake db:create
+<!-- it will migrate and reset your db and run seed data -->
+* rake run_app
+* rails s
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
